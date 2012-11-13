@@ -1,0 +1,24 @@
+# This is a simple configuration file
+# this option should always exist and never be a template
+do_i_exist = yes
+
+# this block of variables should change based on app type
+<%#this is a comment that wont show up in the real file %>
+# this is the <%= @apptype %> settings 
+<% if @apptype == "sybase" %>
+setting1 = bar
+setting2 = foo
+<% elsif @apptype == "oracle" %>
+setting1 = who_knows
+setting2 = something_special
+<% else %>
+setting1 = foo
+setting2 = bar
+<% end %>
+
+# use a default value, unless over ridden by one provided
+<% if @custom_memory %>
+max_ram = <%= @custom_memory %>
+<% else %>
+max_ram = 1024
+<% end %>
